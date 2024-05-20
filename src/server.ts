@@ -15,15 +15,17 @@ const io = socketIo(server, {
   });
   
 io.on('connection', (socket: any) => {
-  console.log('Client connected');
+  console.log('Cliente conectado');
   const unsubscribeFromBinance = subscribeToBinanceWebSocket(io);
 
   socket.on('disconnect', () => {
-    console.log('Client disconnected');
+    console.log('Cliente desconectado');
     unsubscribeFromBinance();
   });
 });
 
 server.listen(3000, () => {
-  console.log('Server is running on port 3000');
+  console.log('Server rodando na porta 3000');
 });
+
+
