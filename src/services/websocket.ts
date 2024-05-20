@@ -1,4 +1,4 @@
-// 1 - Importações necessárias
+// 1 - Importações
 import { pairs } from '../constants/pairs';
 import WebSocket from 'ws';
 import { Server } from 'socket.io';
