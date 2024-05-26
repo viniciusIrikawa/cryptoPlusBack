@@ -8,7 +8,9 @@ export const subscribeToBinanceWebSocket = (io: Server) => {
     const sockets: { [key: string]: WebSocket } = {};
 
     pairs.forEach((pair) => {
-        const ws = new WebSocket(`wss://stream.binance.com:9443/ws/${pair.toLowerCase()}@trade`);
+        const ws = new WebSocket(
+            `wss://stream.binance.com:9443/ws/${pair.toLowerCase()}@trade`
+        );
 
         ws.on('message', (message: any) => {
             const data = JSON.parse(message);

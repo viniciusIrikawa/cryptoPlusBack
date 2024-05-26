@@ -4,8 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.subscribeToBinanceWebSocket = void 0;
+// 1 - Importações
 const pairs_1 = require("../constants/pairs");
 const ws_1 = __importDefault(require("ws"));
+// 2 - Função que estabelece conexão WebSocket.
 const subscribeToBinanceWebSocket = (io) => {
     const sockets = {};
     pairs_1.pairs.forEach((pair) => {
