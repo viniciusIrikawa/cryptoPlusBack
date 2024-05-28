@@ -15,7 +15,8 @@ export const subscribeToBinanceWebSocket = (io: Server) => {
         ws.on('message', (message: any) => {
             const data = JSON.parse(message);
             const currentPrice = parseFloat(data.p);
-            io.emit('priceUpdate', { pair, price: currentPrice });
+            const sentTimestamp = Date.now();
+            io.emit('priceUpdate', { pair, price: currentPrice, sentTimestamp });
         });
 
         sockets[pair] = ws;

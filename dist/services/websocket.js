@@ -15,7 +15,8 @@ const subscribeToBinanceWebSocket = (io) => {
         ws.on('message', (message) => {
             const data = JSON.parse(message);
             const currentPrice = parseFloat(data.p);
-            io.emit('priceUpdate', { pair, price: currentPrice });
+            const sentTimestamp = Date.now();
+            io.emit('priceUpdate', { pair, price: currentPrice, sentTimestamp });
         });
         sockets[pair] = ws;
     });
