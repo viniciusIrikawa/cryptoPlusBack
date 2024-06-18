@@ -6,8 +6,9 @@ const http = require('http');
 const express = require('express');
 const socketIo = require('socket.io');
 const cors = require('cors');
-// Configuração do server WebSocket
+require('dotenv').config();
 const app = express();
+const PORT = process.env.PORT;
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
@@ -16,14 +17,13 @@ const io = socketIo(server, {
     }
 });
 io.on('connection', (socket) => {
-    console.log('Cliente conectado');
+    console.log('Client connected');
     const unsubscribeFromBinance = (0, websocket_1.subscribeToBinanceWebSocket)(io);
     socket.on('disconnect', () => {
-        console.log('Cliente desconectado');
+        console.log('Client disconnected');
         unsubscribeFromBinance();
     });
 });
-// Configuração da porta do servidor
-server.listen(3000, () => {
-    console.log('Server rodando na porta 3000');
+server.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });

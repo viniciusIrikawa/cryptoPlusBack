@@ -4,8 +4,10 @@ const http = require('http');
 const express = require('express');
 const socketIo = require('socket.io');
 const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
+const PORT = process.env.PORT;
 const server = http.createServer(app);
 
 const io = socketIo(server, {
@@ -16,16 +18,16 @@ const io = socketIo(server, {
   });
   
 io.on('connection', (socket: any) => {
-  console.log('Cliente conectado');
+  console.log('Client connected');
   const unsubscribeFromBinance = subscribeToBinanceWebSocket(io);
 
   socket.on('disconnect', () => {
-    console.log('Cliente desconectado');
+    console.log('Client disconnected');
     unsubscribeFromBinance();
   });
 });
 
 
-server.listen(3000, () => {
-  console.log('Server rodando na porta 3000');
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
