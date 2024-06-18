@@ -5,7 +5,6 @@ const express = require('express');
 const socketIo = require('socket.io');
 const cors = require('cors');
 
-// Configuração do server WebSocket
 const app = express();
 const server = http.createServer(app);
 
@@ -26,7 +25,7 @@ io.on('connection', (socket: any) => {
   });
 });
 
-// Configuração da porta do servidor
+
 server.listen(3000, () => {
   console.log('Server rodando na porta 3000');
 });

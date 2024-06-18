@@ -1,9 +1,7 @@
-// 1 - Importações
 import { pairs } from '../constants/pairs';
 import WebSocket from 'ws';
 import { Server } from 'socket.io';
 
-// 2 - Função que estabelece conexão WebSocket.
 export const subscribeToBinanceWebSocket = (io: Server) => {
     const sockets: { [key: string]: WebSocket } = {};
 
