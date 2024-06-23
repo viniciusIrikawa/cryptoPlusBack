@@ -8,6 +8,13 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT;
+
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
+}));
+
 const server = http.createServer(app);
 
 const io = socketIo(server, {
